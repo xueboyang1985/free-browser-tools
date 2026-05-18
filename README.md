@@ -31,6 +31,11 @@ Format, validate and minify JSON, convert between JSON and CSV. No upload, fully
 Generate strong random passwords with customizable length, character sets, and bulk mode. Strength indicator included.
 - [Live Tool](https://xueboyang1985.github.io/password-generator/)
 - [GitHub Repo](https://github.com/xueboyang1985/password-generator)
+
+### 📱 [QR Code Generator](https://xueboyang1985.github.io/qr-code-generator/)
+Generate QR codes for URLs, text, WiFi, email, and more. Custom colors, sizes, and formats. Fully client-side.
+- [Live Tool](https://xueboyang1985.github.io/qr-code-generator/)
+- [GitHub Repo](https://github.com/xueboyang1985/qr-code-generator)
 ## Why These Tools?
 - **100% local**: All processing happens in your browser
 - **No upload**: Your files never leave your device
