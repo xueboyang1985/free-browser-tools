@@ -3,62 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Browser Tools - No Upload, No Signup, No Server</title>
-<meta name="description" content="Curated collection of free browser-based tools that process everything locally. Your files never leave your device.">
+<title>Free Browser Tools - 100% Local, No Signup, No Upload</title>
+<meta name="description" content="Collection of free browser-based tools that run 100% locally. Password generator, QR code generator, Kindle highlights exporter, subtitle converter, WhatsApp chat formatter, JSON formatter & CSV converter. No upload, no signup, no tracking.">
+<meta property="og:title" content="Free Browser Tools - 100% Local Tool Collection">
+<meta property="og:description" content="Free privacy-first browser tools: password generator, QR code generator, Kindle exporter, subtitle converter, WhatsApp formatter, JSON/CSV converter.">
+<meta property="og:image" content="https://xueboyang1985.github.io/free-browser-tools/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://xueboyang1985.github.io/free-browser-tools/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #333; line-height: 1.6; }
-.container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-h1 { font-size: 32px; margin-bottom: 8px; color: #1a1a1a; }
-.subtitle { color: #666; font-size: 16px; margin-bottom: 32px; }
-.card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-.card h2 { font-size: 20px; margin-bottom: 8px; }
-.card p { color: #555; margin-bottom: 12px; }
-.card .links { margin-top: 12px; }
-.card a { display: inline-block; margin-right: 12px; color: #6366f1; text-decoration: none; font-weight: 500; }
-.card a:hover { text-decoration: underline; }
-.tag { display: inline-block; background: #eef2ff; color: #4f46e5; padding: 2px 10px; border-radius: 12px; font-size: 12px; margin-right: 6px; margin-bottom: 8px; }
-.footer { text-align: center; color: #999; font-size: 13px; margin-top: 40px; }
-.footer a { color: #6366f1; text-decoration: none; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;color:#1a1a1a;line-height:1.7;}
+.container{max-width:800px;margin:0 auto;padding:20px;}
+.header{text-align:center;padding:50px 0 30px;}
+.header h1{font-size:34px;margin-bottom:10px;background:linear-gradient(135deg,#6366f1,#e94560);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.header p{color:#64748b;font-size:16px;max-width:600px;margin:0 auto;}
+.intro{background:white;border-radius:12px;padding:24px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.08);font-size:15px;color:#475569;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.card{background:white;border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08);transition:transform 0.15s,box-shadow 0.15s;text-decoration:none;color:inherit;display:flex;flex-direction:column;}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.12);}
+.card .icon{font-size:32px;margin-bottom:8px;}
+.card h2{font-size:17px;margin-bottom:6px;color:#1a1a1a;}
+.card p{font-size:13px;color:#64748b;line-height:1.5;flex:1;}
+.card .tag{display:inline-block;margin-top:10px;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;width:fit-content;}
+.footer{text-align:center;padding:40px 0;color:#94a3b8;font-size:13px;}
+@media(max-width:600px){.grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <div class="container">
-<h1>🧰 Free Browser Tools</h1>
-<p class="subtitle">Curated collection of browser-based tools that run 100% locally — no upload, no signup, no server.</p>
-
-<div class="card">
-  <div>
-    <span class="tag">Kindle</span>
-    <span class="tag">Export</span>
-    <span class="tag">Markdown</span>
-    <span class="tag">CSV</span>
-  </div>
-  <h2>📖 Kindle Highlights Exporter</h2>
-  <p>Export your Kindle highlights and notes to Markdown, CSV, or JSON. Drag and drop <em>My Clippings.txt</em>, preview all books, and export in your format. 100% browser-based, nothing uploaded.</p>
-  <div class="links">
-    <a href="https://xueboyang1985.github.io/kindle-exporter/" target="_blank">Open Tool →</a>
-    <a href="https://github.com/xueboyang1985/kindle-exporter" target="_blank">GitHub</a>
-  </div>
+<div class="header">
+<h1>Free Browser Tools</h1>
+<p>Privacy-first tools that run 100% in your browser — no upload, no signup, no server, no tracking</p>
 </div>
 
-<div class="card">
-  <div>
-    <span class="tag">Subtitle</span>
-    <span class="tag">SRT</span>
-    <span class="tag">VTT</span>
-    <span class="tag">Transcript</span>
-  </div>
-  <h2>🎬 Subtitle Converter & Transcript Exporter</h2>
-  <p>Convert SRT, VTT, and ASS subtitles to TXT, Markdown, CSV, or JSON. Preview entries with timestamps and export as clean text or structured data. 100% local processing.</p>
-  <div class="links">
-    <a href="https://xueboyang1985.github.io/subtitle-converter/" target="_blank">Open Tool →</a>
-    <a href="https://github.com/xueboyang1985/subtitle-converter" target="_blank">GitHub</a>
-  </div>
+<div class="intro">
+<strong>Why use these tools?</strong> Every tool is a single HTML file with vanilla JavaScript. All processing happens locally on your device. Your files and data never leave your computer. No accounts, no emails, no cookies, no tracking. Works offline after first load.
+</div>
+
+<div class="grid">
+<a class="card" href="https://xueboyang1985.github.io/password-generator/">
+<div class="icon">🔐</div>
+<h2>Password Generator</h2>
+<p>Create strong, secure random passwords with customizable length, character types, and bulk generation. Real-time strength indicator.</p>
+<span class="tag" style="background:#e0e7ff;color:#4338ca;">New</span>
+</a>
+
+<a class="card" href="https://xueboyang1985.github.io/qr-code-generator/">
+<div class="icon">📱</div>
+<h2>QR Code Generator</h2>
+<p>Generate QR codes for URLs, text, WiFi login, email, phone, and SMS. Custom colors and sizes. Download PNG.</p>
+<span class="tag" style="background:#e0e7ff;color:#4338ca;">New</span>
+</a>
+
+<a class="card" href="https://xueboyang1985.github.io/kindle-exporter/">
+<div class="icon">📖</div>
+<h2>Kindle Highlights Exporter</h2>
+<p>Export Kindle highlights and notes from My Clippings.txt to Markdown, CSV, or JSON. Sort by book or date.</p>
+<span class="tag" style="background:#dcfce7;color:#15803d;">Popular</span>
+</a>
+
+<a class="card" href="https://xueboyang1985.github.io/json-csv-converter/">
+<div class="icon">🔧</div>
+<h2>JSON Formatter & CSV Converter</h2>
+<p>Format, validate, minify JSON. Convert between JSON and CSV. Perfect for developers working with data.</p>
+<span class="tag" style="background:#fef3c7;color:#92400e;">PRO</span>
+</a>
+
+<a class="card" href="https://xueboyang1985.github.io/subtitle-converter/">
+<div class="icon">🎬</div>
+<h2>Subtitle Converter</h2>
+<p>Convert SRT, VTT, and ASS subtitles to TXT, Markdown, CSV, or JSON. Preview with timestamps.</p>
+</a>
+
+<a class="card" href="https://xueboyang1985.github.io/whatsapp-chat-formatter/">
+<div class="icon">💬</div>
+<h2>WhatsApp Chat Formatter</h2>
+<p>Format WhatsApp exported chats to clean Markdown, HTML, TXT, CSV, or JSON. 100% local processing.</p>
+</a>
 </div>
 
 <div class="footer">
-  <p>All tools run in your browser. Files never leave your device. <a href="https://github.com/xueboyang1985/free-browser-tools">GitHub</a></p>
+<p>All tools are open source &bull; MIT license &bull; Free &bull; No tracking &bull; No analytics</p>
+<p style="margin-top:4px;"><a href="https://github.com/xueboyang1985/free-browser-tools" style="color:#6366f1;">View on GitHub</a></p>
 </div>
 </div>
 </body>
