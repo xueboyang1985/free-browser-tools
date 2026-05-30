@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded',function(){
 window.addEventListener('message',function(e){
   try{
     var d=typeof e.data==='string'?JSON.parse(e.data):e.data;
-    if(e.origin.indexOf('gumroad.com')>=0&&d&&d.license_key){
+    if(e.origin.indexOf('gumroad.com')>=0&&d&&d.success&&d.purchase&&d.license_key){
       document.getElementById('pro-modal').style.display='flex';
     }
   }catch(e1){}

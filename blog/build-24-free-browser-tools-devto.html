@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built 24 Free Browser Tools That Run 100% Client-Side — No Upload, No Tracking</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:700px;margin:0 auto;padding:20px;line-height:1.8;color:#1a1a1a;background:#f8fafc;}
+h1{font-size:30px;margin:40px 0 10px;}
+h2{font-size:20px;margin:30px 0 10px;color:#4338ca;}
+p{margin:14px 0;color:#475569;}
+li{color:#475569;margin:4px 0;}
+.meta{color:#94a3b8;font-size:13px;}
+code{background:#eef2ff;padding:2px 6px;border-radius:4px;font-size:14px;}
+pre{background:#1e293b;color:#e2e8f0;padding:16px;border-radius:8px;overflow-x:auto;font-size:14px;}
+.cta{background:#eef2ff;border-radius:12px;padding:24px;text-align:center;margin:30px 0;}
+.cta a{display:inline-block;padding:12px 28px;background:#6366f1;color:white;border-radius:8px;text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+<h1>I Built 24 Free Browser Tools That Run 100% Client-Side — No Upload, No Tracking</h1>
+<p class="meta">Published: June 2026 | Cross-post from dev.to</p>
+
+<p>Six weeks ago, I started building browser-based tools as a side project. Today, I have <strong>24 tools</strong> — and they've collectively handled zero server requests. Because there is no server.</p>
+
+<p>Every tool is a single HTML file with vanilla JavaScript. Hosted on GitHub Pages. No frameworks, no build step, no backend, no database. Just a browser and some JS libraries loaded via CDN.</p>
+
+<p>Here's the full collection:</p>
+<p><strong>Hub page:</strong> <a href="https://xueboyang1985.github.io/free-browser-tools/">https://xueboyang1985.github.io/free-browser-tools/</a></p>
+
+<h2>The Stack</h2>
+<p>The tech choices are intentionally boring:</p>
+<ul>
+<li><strong>Hosting:</strong> GitHub Pages (free, global CDN via Cloudflare)</li>
+<li><strong>Frontend:</strong> Vanilla HTML/CSS/JS — no React, no Vue, no build tools</li>
+<li><strong>PDF:</strong> pdf-lib, jsPDF, pdf.js (all loaded via CDN)</li>
+<li><strong>QR:</strong> qrcodejs</li>
+<li><strong>Images:</strong> Canvas API (built into the browser)</li>
+<li><strong>Crypto:</strong> Web Crypto API (<code>crypto.getRandomValues</code>)</li>
+<li><strong>State:</strong> localStorage (with try-catch for private browsing)</li>
+</ul>
+
+<p>That's it. The entire "stack" is HTML files and CDN links. No backend, no CI/CD, no containers, no orchestrators.</p>
+
+<h2>Why Client-Side?</h2>
+<p>Most "free online tools" work like this: you upload a file to their server, they process it, you download the result. This means:</p>
+<ul>
+<li>Your data goes to someone else's server</li>
+<li>They can (and often do) track you</li>
+<li>The service stops working if they shut down</li>
+<li>Upload speed limits the experience</li>
+</ul>
+<p>Client-side tools solve all of this. Every tool runs in the user's browser using the File API, Canvas API, and Web APIs. Nothing is uploaded. No data is sent over the network. It works offline after the first page load.</p>
+
+<h2>The 24 Tools (with what I learned building each)</h2>
+
+<h3>PDF Tools</h3>
+<p>7 tools in one page: merge PDFs, split pages, images-to-PDF, PDF-to-images, extract embedded images, image-to-base64, text-to-image. The PDF merge was the hardest — merging PDFs in the browser without losing formatting requires pdf-lib, and large files (100+ pages) need careful memory management. Free limit: 125 pages.</p>
+
+<h3>Image Compressor</h3>
+<p>Uses the Canvas API to re-encode images at adjustable quality. Supports JPG, PNG, and WebP. The trick: draw the image to a canvas at a reduced quality setting, then export. No server-side image processing library needed. Free limit: 5MB files.</p>
+
+<h3>Image Resizer & Cropper</h3>
+<p>Canvas API again. Resize maintains aspect ratio by default (toggle to override). Cropper uses a draggable selection overlay. The hardest part was making the crop selection handle touch events properly.</p>
+
+<h3>Background Remover</h3>
+<p>This one is special: it uses the @imgly/background-removal library, which runs a neural network (ONNX runtime) entirely in the browser via WebAssembly. No API key, no server, no upload. Just a 40MB model that downloads once and caches. It's slow (~5 seconds per image) but it works completely offline.</p>
+
+<h3>Password Generator</h3>
+<p>Uses <code>crypto.getRandomValues</code> for cryptographically secure randomness. Options for character sets, length, and excluding ambiguous characters (like 1/l/I). Strength meter shows real-time entropy estimation.</p>
+
+<h3>QR Code Generator</h3>
+<p>Wraps qrcodejs. Supports URLs, WiFi credentials, email, SMS, phone, and vCard. The vCard format was surprisingly finicky — different phones handle field ordering differently.</p>
+
+<h3>JSON-CSV Converter</h3>
+<p>Parses JSON with bigint support (for large numbers) and handles nested objects by flattening keys. CSV mode auto-detects delimiters. The bidirectional conversion (JSON→CSV and CSV→JSON) was tricky because CSV has no schema, so type inference is needed.</p>
+
+<h3>Base64 Encoder</h3>
+<p>Encodes text and files to Base64. The file encoding uses FileReader.readAsDataURL. Also includes a string/hex/binary converter for developers debugging encoding issues.</p>
+
+<h3>Color Picker</h3>
+<p>Eye dropper, color wheel, and conversion between HEX, RGB, HSL, and named colors. Uses the EyeDropper API where available. The HSL↔RGB conversion math took a few tries to get right.</p>
+
+<h3>HTML Formatter & CSS Minifier</h3>
+<p>HTML formatter indents tags properly (handling self-closing tags, nested templates). CSS minifier strips whitespace and comments. Both use regex-based parsing which works for 95% of cases but will choke on unusual syntax.</p>
+
+<h3>URL Encoder</h3>
+<p>Encodes/decodes URL components and full URLs. Also handles Base64 encoded data URLs.</p>
+
+<h3>Timestamp Converter</h3>
+<p>Converts between Unix timestamps (seconds and milliseconds), ISO 8601, and human-readable dates. Shows relative time ("2 hours ago") and timezone-aware conversions.</p>
+
+<h3>Number Base Converter</h3>
+<p>Converts between binary, octal, decimal, and hexadecimal. Handles fractions and shows step-by-step conversion for educational purposes.</p>
+
+<h3>Random Generator</h3>
+<p>Five tabbed tools: number generator, coin flip, dice roller, list picker, and shuffle. Uses crypto.getRandomValues for fairness.</p>
+
+<h3>Text Diff Checker</h3>
+<p>Line-by-line and character-by-character diff with highlighted insertions/deletions. Uses a simple LCS (longest common subsequence) algorithm.</p>
+
+<h3>Word Counter</h3>
+<p>Counts words, characters (with/without spaces), sentences, and paragraphs. Also estimates reading time.</p>
+
+<h3>Case Converter</h3>
+<p>Converts text to uppercase, lowercase, title case, sentence case, and camelCase/snake_case/kebab-case for developers.</p>
+
+<h3>Markdown Editor</h3>
+<p>Split-pane editor with live preview. Uses the marked library for rendering. Supports GitHub-flavored markdown including tables and code blocks with syntax highlighting.</p>
+
+<h3>UUID Generator</h3>
+<p>Generates UUID v4 (random) and v7 (time-ordered). Bulk generation up to 1000 at once. Uses crypto.getRandomValues. v7 was interesting — it embeds timestamps for database-index-friendly ordering.</p>
+
+<h3>WhatsApp Chat Formatter</h3>
+<p>Parses exported WhatsApp chat logs and converts to Markdown, HTML, or CSV. Handles the various date formats, media placeholders, and emoji.</p>
+
+<h3>Subtitle Converter</h3>
+<p>Converts between SRT, VTT, and ASS subtitle formats. Each format has different timing precision requirements (SRT uses milliseconds, VTT uses hours:minutes:seconds.milliseconds). Text extraction mode strips all timing data.</p>
+
+<h3>Kindle Highlights Exporter</h3>
+<p>Parses Kindle's My Clippings.txt format (which is notoriously irregular) and exports to Markdown or CSV. Groups by book and sorts by location.</p>
+
+<h2>Monetization: The PRO Bundle</h2>
+<p>All 24 tools are free to use. The free versions have reasonable limits (e.g., PDF: 125 pages, images: 5MB, password: unlimited).</p>
+<p>The <a href="https://xueboyang1985.github.io/free-browser-tools/bundle.html">PRO Bundle ($19.99)</a> removes all limits with a single license key across all tools. One-time payment, lifetime access, 3 devices. License verification uses Gumroad's license API.</p>
+<p>I wanted a model where the free version is genuinely useful (most casual users never hit the limits), but power users have a simple, fair upgrade path.</p>
+
+<h2>What I'd Do Differently</h2>
+<ul>
+<li><strong>Start with a component library.</strong> I rebuilt the same toast notification, modal, and PRO badge across 24 files. A shared component set would have saved days.</li>
+<li><strong>Use a CDN strategy from day one.</strong> Some tools load heavy libraries (pdf-lib is 500KB+). Proper caching headers and deferred loading make a big difference.</li>
+<li><strong>SEO from the start.</strong> I added blog posts, sitemaps, and cross-links retroactively. Doing this upfront would have helped discovery earlier.</li>
+</ul>
+
+<h2>The Business Numbers</h2>
+<p>24 tools built over 6 weeks. Zero server costs (GitHub Pages is free). Gumroad handles payments (9% + $0.30 per transaction). The only cost is domain setup and some CDN bandwidth, which is negligible.</p>
+<p>Revenue so far: $0. Building was the easy part. Distribution is the hard part.</p>
+
+<h2>Check It Out</h2>
+<p>All tools are free, open source, and require no signup:</p>
+<p><strong>Hub:</strong> <a href="https://xueboyang1985.github.io/free-browser-tools/">https://xueboyang1985.github.io/free-browser-tools/</a><br>
+<strong>Bundle:</strong> <a href="https://xueboyang1985.github.io/free-browser-tools/bundle.html">PRO Bundle ($19.99)</a></p>
+
+<p>All source code is on <a href="https://github.com/xueboyang1985">GitHub</a> — MIT license.</p>
+
+<p>Questions? Feedback? Leave a comment below!</p>
+</body>
+</html>
